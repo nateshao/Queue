@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/RabbitMQ.iml" filepath="$PROJECT_DIR$/.idea/RabbitMQ.iml" />
-      <module fileurl="file://$PROJECT_DIR$/nateshao-rabbitmq-comsumer/nateshao-rabbitmq-comsumer.iml" filepath="$PROJECT_DIR$/nateshao-rabbitmq-comsumer/nateshao-rabbitmq-comsumer.iml" />
-    </modules>
-  </component>
-</project>
