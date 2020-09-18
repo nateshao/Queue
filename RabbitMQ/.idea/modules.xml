@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/RabbitMQ.iml" filepath="$PROJECT_DIR$/.idea/RabbitMQ.iml" />
       <module fileurl="file://$PROJECT_DIR$/nateshao-rabbitmq-comsumer/nateshao-rabbitmq-comsumer.iml" filepath="$PROJECT_DIR$/nateshao-rabbitmq-comsumer/nateshao-rabbitmq-comsumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nateshao-rabbitmq-producer/nateshao-rabbitmq-producer.iml" filepath="$PROJECT_DIR$/nateshao-rabbitmq-producer/nateshao-rabbitmq-producer.iml" />
     </modules>
   </component>
 </project>
