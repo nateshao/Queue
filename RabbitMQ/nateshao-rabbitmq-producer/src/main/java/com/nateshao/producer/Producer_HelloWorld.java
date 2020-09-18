@@ -59,7 +59,7 @@ public class Producer_HelloWorld {
         //6. 发送消息
         channel.basicPublish("","hello_world",null,body.getBytes());
         //7.释放资源
-//        channel.close();
-//        connection.close();
+        channel.close();
+        connection.close();
     }
 }
