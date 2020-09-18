@@ -1,5 +1,12 @@
 package com.nateshao.comsumer;
 
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
+
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
+
 /**
  * @date Created by 邵桐杰 on 2020/9/18 22:05
  * @微信公众号 千羽的编程时光
@@ -9,7 +16,39 @@ package com.nateshao.comsumer;
  * @Gitee https://gitee.com/nateshao
  */
 public class Consumer_HelloWorld {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, TimeoutException {
+        //1.创建连接工厂
+        ConnectionFactory factory = new ConnectionFactory();
+        //2. 设置参数
+        factory.setHost("122.51.23.194");//ip  默认值 localhost
+        factory.setPort(5672); //端口  默认值 5672
+        factory.setVirtualHost("/");//虚拟机 默认值/
+        factory.setUsername("guest");//用户名 默认 guest
+        factory.setPassword("guest");//密码 默认值 guest
+        //3. 创建连接 Connection
+        Connection connection = factory.newConnection();
+        //4. 创建Channel
+        Channel channel = connection.createChannel();
+        //5. 创建队列Queue
+        /*
+        queueDeclare(String queue, boolean durable, boolean exclusive, boolean autoDelete, Map<String, Object> arguments)
+        参数：
+            1. queue：队列名称
+            2. durable:是否持久化，当mq重启之后，还在
+            3. exclusive：
+                * 是否独占。只能有一个消费者监听这队列
+                * 当Connection关闭时，是否删除队列
+                *
+            4. autoDelete:是否自动删除。当没有Consumer时，自动删除掉
+            5. arguments：参数。
+
+         */
+        //如果没有一个名字叫hello_world的队列，则会创建该队列，如果有则不会创建
+        channel.queueDeclare("hello_world",true,false,false,null);
+
+
+
+
 
     }
 }
