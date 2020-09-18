@@ -9,5 +9,7 @@ package com.nateshao.comsumer;
  * @Gitee https://gitee.com/nateshao
  */
 public class Consumer_HelloWorld {
+    public static void main(String[] args) {
 
+    }
 }
