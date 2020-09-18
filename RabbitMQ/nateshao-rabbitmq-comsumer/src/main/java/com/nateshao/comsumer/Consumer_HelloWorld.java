@@ -1,8 +1,6 @@
 package com.nateshao.comsumer;
 
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.*;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -44,10 +42,39 @@ public class Consumer_HelloWorld {
 
          */
         //如果没有一个名字叫hello_world的队列，则会创建该队列，如果有则不会创建
-        channel.queueDeclare("hello_world",true,false,false,null);
+        channel.queueDeclare("hello_world", true, false, false, null);
+
+ /*
+        basicConsume(String queue, boolean autoAck, Consumer callback)
+        参数：
+            1. queue：队列名称
+            2. autoAck：是否自动确认
+            3. callback：回调对象
+         */
+        // 接收消息
+        Consumer consumer = new DefaultConsumer(channel) {
+            /*
+                回调方法，当收到消息后，会自动执行该方法
+
+                1. consumerTag：标识
+                2. envelope：获取一些信息，交换机，路由key...
+                3. properties:配置信息
+                4. body：数据
+
+             */
+            @Override
+            public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
+                System.out.println("consumerTag：" + consumerTag);
+                System.out.println("Exchange：" + envelope.getExchange());
+                System.out.println("RoutingKey：" + envelope.getRoutingKey());
+                System.out.println("properties：" + properties);
+                System.out.println("body：" + new String(body));
+            }
+        };
+        channel.basicConsume("hello_world", true, consumer);
 
 
-
+        //关闭资源？不要
 
 
     }
